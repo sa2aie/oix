@@ -1,0 +1,30 @@
+== Endpoints
+Each domain publishes it's main entry endpoint, similar to MX records in the
+e-mail domain.
+The published url is a base url and has to be modified by the sender to
+get a full url.
+
+
+== Operations
+
+All operations has a common baseurl, and also a
+
+=== Consumer
+
+URL: <baseurl>/<version>/consumer/[consumer_address]
+Method : GET
+
+This url returns a list of all public consumers in the domain
+
+by appending an address to the url it is possible to find non public addresses
+and be able of getting their signing certificate / or key.
+
+=== Receive
+
+URL: <baseurl>/<version>/receive/
+Method : PUT
+
+The http body contains a message to deliver to the endpoint
+The endpoint
+
+The method must return an array of all recipients it has accepted delivery to.

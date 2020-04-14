@@ -1,0 +1,17 @@
+== Resolving Endpoints
+
+To find an endpoint for a domain the sender has to resolve the domain endpoint
+using dns.
+
+Once found the sender has to get the domains signing certificate, also published
+using dns.
+
+Equipped with this, the sender can get a list of consumers from the endpoint.
+
+API Versioning
+
+The api is versioned and all major releases must be compatible with itself and
+it is only allowed to add fields and operations to an api. Breaking changes
+will increase the major version. It is however allowed to add functionality to
+to api, increasing the minor version. A client implemented using an older version
+of the api will then function even if there are features added to the api.

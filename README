@@ -1,0 +1,16 @@
+The project is intended to create a specification for information interchange
+and also some reference implementations.
+
+The intended uses is machine / system to system replication of information,
+with no central administration.
+
+The project will go through a few phases:
+
+1. Define the scope of the project
+2. Define transport level protocol
+3. Define a few standardised basic entites.
+4. Create test implementations
+5. Goto 1
+
+
+Examples are done as a me learning node.js project.

@@ -1,0 +1,25 @@
+== Transport overview
+
+=== Basics
+The transport of messages is inspired upon SMTP,MIME and related protocols
+due to its proven record and it's simplicity.
+
+Communication must use https/REST for message transport is mandatory,
+and other methods of transport is optional (i.e. for internal systems).
+
+=== Endpoints
+Endpoints comes in 3 different types
+. Public - seen by everyone
+. Private - should not be exposed to external parties since there is no way of verifying signatures
+. Hidden - publicly available but not listed in a catalog
+
+=== Domains
+The requirements on a domain owner to join the network is:
+. Publishing endpoint(s) using a DNS SRV records (_tcp._oix.domain.com)
+. Publishing a public signing certificate for the domain using dns resource records
+. Enroll a domain wide endpoint.
+
+=== Required operations
+The endpoint must support BASEURL/v1/endpoint operation.
+It should return a list of all public endoints and their public key/certificate
+BASEURL/v1/endpoint/<endpointid> must retun public keys for both public and hidden endpoints.

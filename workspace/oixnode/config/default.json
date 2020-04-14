@@ -1,0 +1,7 @@
+{
+  // Customer module configs
+  "messaging": {
+    "amqp_uri" : "amqp://oix:badpass@localhost/oix"
+
+  }
+}
