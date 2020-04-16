@@ -7,7 +7,7 @@ get a full url.
 
 == Operations
 
-All operations has a common baseurl, and also a
+All operations has a common baseurl.
 
 === Consumer
 
@@ -17,7 +17,13 @@ Method : GET
 This url returns a list of all public consumers in the domain
 
 by appending an address to the url it is possible to find non public addresses
-and be able of getting their signing certificate / or key.
+and be able of getting their signing certificate / key.
+
+URL: <baseurl>/<version>/consumer
+Method : POST
+
+The http body contains a json array of id:s to lookup, to avoid multiple
+roundtrips to the authorative server.
 
 === Receive
 

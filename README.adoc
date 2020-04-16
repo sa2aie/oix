@@ -1,0 +1,31 @@
+
+== README
+
+The project is intended to create a specification for information interchange
+and also some reference implementations.
+
+The intended uses is machine / system to system replication of information,
+with no central administration.
+
+This project is based on the ideas of SMTP and the simplicity of creating
+a service. It will add required features for security and authentication that
+is missing from the original SMTP protocol. It will also use json
+as a transport format to ease parsing of messages.
+
+Even if ths project is licensed using the MIT license, there is a need to keep
+a central registry of all defined message types to allow for information interchange
+
+
+
+The project will go through a few phases:
+
+1. Define the scope of the project
+2. Define transport level protocol
+3. Define a few standardised basic entites.
+4. Create test implementations
+5. Goto 1
+
+
+Examples are done as a me learning node.js project.
+
+The goal is to have a final specification for v 1.0 in Q4 2020.

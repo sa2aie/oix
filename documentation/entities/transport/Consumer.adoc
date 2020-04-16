@@ -1,0 +1,58 @@
+==== Consumer
+
+[source]
+------
+var consumer = {
+  endpoint: {
+    type: String,
+    required: 'endpoint url i missing',
+    description: "Base address of endpoint for message delivery"
+  },
+  address: {
+    type: String,
+    required: 'address is missing',
+    description: ""
+  },
+  type: {
+    type: {
+      type: String,
+      enum: ['public', 'private', 'internal'],
+      required: 'type is missing',
+      description: ""
+    },
+    default: ['public']
+  },
+  public_key_type: {
+    type: String,
+    required: 'public_key_type is missing',
+    description: ""
+  },
+  public_key: {
+    type: String,
+    required: 'public_key is missing',
+    description: ""
+  },
+  environment: {javascript
+    type: String,
+    enum: ['test', 'development', 'production'],
+    description: ""
+  },
+  accepts: [{
+    type: String,
+    description: ""
+  }],
+  versions: [{
+    type: String,
+    enum: ['v0.1', 'dev'],
+    description: ""
+  }],
+  expires: {
+    type: Date,
+    description: ""
+  },
+  description: {
+    type: String,
+    description: ""
+  }
+};
+------

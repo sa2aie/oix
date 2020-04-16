@@ -1,5 +1,9 @@
 ==== Envelope
 
+[abstract]
+The envelope is the transport container of a message.
+
+....
 envelope: {
   header: {
     "sender" : "string",  // the sender of this message
@@ -7,6 +11,10 @@ envelope: {
     "messageid" : "string", // globally unique message id
     "expires" : "datetime", // should be dropped if older than this.
     "message_type" : "string" // the type of the message body
+    "api_version" : "string",
+    "send_delivery_receipt": "bool", // send receipt when delivered to recipient
+    "send_transport_notification": "bool", // send notifications from intermediate hubs
+
   },
   "transitinformation" :
   {
@@ -25,16 +33,19 @@ envelope: {
   }
   "signature" : "base64 encoded signature over header and message"
 }
+....
 
 Example message
 
+....
 envelope : {
     header: {
       sender : "monarch@acme.com",
       recipients : ["queen@xyz.com","prince@abc.com"],
       messageid : "12356-1234-12345@acme.com",
       expires : "2020-06-01T14:00:00+UTC",
-      message_type : "hello"
+      message_type : "hello",
+      api_version : "0.1"
     },
     transitinformation:{
       path:["broker@acme.com", "publicendpoint@acme.com"],
@@ -46,3 +57,4 @@ envelope : {
     encryption : null,
     signature : "9sd18313812ab3s3=="
 }
+....

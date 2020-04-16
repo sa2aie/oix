@@ -1,0 +1,32 @@
+
+....
+report: {
+  header: {
+    "sender" : "string",  // the sender of this message
+    "recipients" : "string[]", // the recipients of the message
+    "correlationid" : string,
+    "messageid" : "string", // globally unique message id
+    "expires" : "datetime", // should be dropped if older than this.
+    "message_type" : "string" // the type of the message body
+    "api_version" : "string",
+  },
+  "transitinformation" :
+  {
+    "path" : "string[]",  // list of message brokers that has handled this message
+    "timetolive" : "int", // this value is decreased by each broker and message is dropped if it reaches 0 without delivery
+  },
+  "report" :
+  {
+    "report_type":"string", // delivered, transit, delayed,failed
+    "result_code":"int",
+    "result_message":"string",
+    "extra_information":"string"
+  },
+  "encryption" :
+  {
+    "keys" : "dictionary of keys", // dictionary of keys used to decrypt the mesage data, one encrypted key for each recipient
+    "cipher" : "string", // the cipher used to encrypt the data
+  }
+  "signature" : "base64 encoded signature over header and report"
+}
+....

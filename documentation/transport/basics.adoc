@@ -1,3 +1,35 @@
+== Transport overview
+
+=== Basics
+
+The transport of messages is inspired upon SMTP,MIME and related protocols
+due to its proven record and it's simplicity.
+
+Communication must use https/REST for message transport is mandatory,
+and other methods of transport is optional (i.e. for internal systems). The endpoint
+must use a publicly trusted certificate for the endpoint.
+
+=== Endpoints
+
+Endpoints comes in 3 different types
+
+* Public - seen by everyone
+* Internal - should not be exposed to external parties since there is no way of verifying signatures
+* Private - publicly available but not listed in a catalog
+
+=== Domains
+
+The requirements on a domain owner to join the network is:
+
+* Publishing endpoint(s) using a DNS SRV records (_oix._tcp.domain.com)
+* Publishing a public signing certificate for the domain using DNS TXT records
+* Enroll a domain wide endpoint.
+
+=== Required operations
+The endpoint must support BASEURL/v1/consumer operation.
+It should return a list of all public endoints and their public key/certificate
+BASEURL/v1/consumer/<endpointid> must retun public keys for both public and hidden endpoints.
+
 == Resolving Endpoints
 
 To find an endpoint for a domain the sender has to resolve the domain endpoint
@@ -8,10 +40,12 @@ using dns.
 
 Equipped with this, the sender can get a list of consumers from the endpoint.
 
-API Versioning
+=== API Versioning
 
 The api is versioned and all major releases must be compatible with itself and
-it is only allowed to add fields and operations to an api. Breaking changes
-will increase the major version. It is however allowed to add functionality to
-to api, increasing the minor version. A client implemented using an older version
-of the api will then function even if there are features added to the api.
+it is only allowed to add fields and operations to an api in the same version.
+Breaking changes must increase the major version.
+It is however allowed to add functionality to to api, increasing the minor version.
+A client implemented using an older version
+of the api will then function even if there are features added to the api, until
+there is a major version bump.
