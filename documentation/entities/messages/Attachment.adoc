@@ -1,0 +1,48 @@
+
+==== Attachment
+[abstract]
+An attachment is a named, typed data container
+
+[source]
+------
+
+var Attachment = {
+  id: {
+    type: String,
+    required: 'id is missing in attachment',
+    description: "global unique id of object. suggestion is uuid@domin.com"
+  },
+  origin: {
+    type: String,
+    required: 'origin is missing',
+    description: "originating system endpoint id"
+  },
+  type: {
+    type: {
+      type: String,
+      description: "attachment type information"
+    },
+  name: {
+    type: String,
+    required: 'attachment name is missing',
+    description: "a summarized description of the case"
+  },
+  description: {
+    type: String,
+    description: "a detailed description of the case"
+  },
+  description_content_type: {
+    type: String,
+    description: "content type of the description ie, text/plain, text/html"
+  },
+  data_content_type: {
+    type: String,
+    required: 'data_content_type is missing',
+    description: "content type of the data ie, image/jpg, text/html"
+  },
+  data: [{
+    type: byte,
+    required: 'data is missing',
+    description: "raw data of the attachment"
+  }]
+}

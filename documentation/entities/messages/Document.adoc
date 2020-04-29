@@ -1,0 +1,61 @@
+
+==== Document
+[abstract]
+A document is a named, typed data container, similar to an attachment.
+
+[NOTE]
+What is the difference? Is it the same and only the context where it is
+used differs? Difference is probably the amount of data and the fact that the
+document can be a more complex thing like an e-mail where the attachment is
+a simple data container. That is, an email is a document, with attachements
+and so on collected in one object. The most basic document and attachment is the
+same.???
+
+[source]
+------
+
+var Document = {
+  id: {
+    type: String,
+    required: 'id is missing in document',
+    description: "global unique id of object. suggestion is uuid@domin.com"
+  },
+  parent_id: {
+    type: String,
+    required: 'parent_id is missing in document',
+    description: "global unique id of object. suggestion is uuid@domin.com"
+  },
+  origin: {
+    type: String,
+    required: 'origin is missing',
+    description: "originating system endpoint id"
+  },
+  type: {
+    type: {
+      type: String,
+      description: "attachment type information"
+    },
+  name: {
+    type: String,
+    required: 'document name is missing',
+    description: "a summarized description of the document, file name"
+  },
+  description: {
+    type: String,
+    description: "a detailed description of the document"
+  },
+  description_content_type: {
+    type: String,
+    description: "content type of the description ie, text/plain, text/html"
+  },
+  data_content_type: {
+    type: String,
+    required: 'data_content_type is missing',
+    description: "content type of the data ie, image/jpg, text/html"
+  },
+  data: [{
+    type: byte,
+    required: 'data is missing',
+    description: "raw data of the attachment"
+  }]
+}

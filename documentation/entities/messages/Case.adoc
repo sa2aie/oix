@@ -1,0 +1,59 @@
+==== Case
+
+[source]
+------
+var Case = {
+  id: {
+    type: String,
+    required: 'id is missing in case',
+    description: "global unique id of object. suggestion is uuid@domin.com"
+  },
+  origin: {
+    type: String,
+    required: 'origin is missing',
+    description: "originating system endpoint id"
+  },
+  type: {
+    type: {
+      type: String,
+      description: "case type information"
+  },
+  priority: {
+    type: {
+      type: String,
+      description: "case type information"
+  },
+  status: {
+    type: {
+      type: String,
+      enum: ['new', 'onHold', 'inProgress','closed',],
+
+      description: "case type information"
+  },
+  subject: {
+    type: String,
+    required: 'case subject is missing',
+    description: "a summarized description of the case"
+  },
+  description: {
+    type: String,
+    description: "a detailed description of the case"
+  },
+  description_content_type: {
+    type: String,
+    description: "content type of the description ie, text/plain, text/html"
+  },
+  contact_information: [{
+    type: ContactInformation,
+    description: "The person this case concerns"
+  }]
+  attachments: [{
+    type: Attachment,
+    description: "Attachment data"
+  }],
+  documents: [{
+    type: Document,
+    description: "Documents, i.e. emails, and other data"
+  }],
+};
+------

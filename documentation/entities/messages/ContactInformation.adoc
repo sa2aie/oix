@@ -1,0 +1,75 @@
+==== ContactInformation
+
+[source]
+------
+var ContactInformation = {
+  firstName: {
+    type: String,
+    description: ""
+  },
+  lastName: {
+    type: String,
+    description: ""
+  },
+  middleName: {
+    type: String,
+    description: ""
+  },
+  emailAddress: {
+    type: String,
+    description: ""
+  },
+  phoneNumber: {
+    type: String,
+    description: ""
+  },
+  cellPhoneNumber: {
+      type: String,
+      description: ""
+    },
+  careOf: {
+    type: String,
+    description: ""
+  },
+  address1: {
+    type: String,
+    description: ""
+  },
+  address2: {
+    type: String,
+    description: ""
+  },
+  zip: {
+    type: String,
+    description: ""
+  },
+  city: {
+    type: String,
+    description: ""
+  },
+  country: {
+    type: String,
+    description: ""
+  },
+  state: {
+    type: String,
+    description: ""
+  },
+  personalIdentification: {
+    type: String,
+    description: ""
+  },
+  company: {
+    type: String,
+    description: ""
+  },
+  companyIdentification: {
+    type: String,
+    description: ""
+  },
+  organisationalUnit: {
+    type: String,
+    description: ""
+  },
+};
+------

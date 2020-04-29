@@ -9,6 +9,14 @@ Communication must use https/REST for message transport is mandatory,
 and other methods of transport is optional (i.e. for internal systems). The endpoint
 must use a publicly trusted certificate for the endpoint.
 
+[NOTE]
+There is no real reason in specifying a mandatory transport other than standardisation.
+It is possible to
+allow other means of transport, like smtp for messages. This will how ever make
+the broker a little bit more complex since it might get a message using smtp and
+it requires a reply on https. To be continued.
+
+
 === Endpoints
 
 Endpoints comes in 3 different types
@@ -49,3 +57,17 @@ It is however allowed to add functionality to to api, increasing the minor versi
 A client implemented using an older version
 of the api will then function even if there are features added to the api, until
 there is a major version bump.
+
+==== Protocol version vs message specification version
+
+The protocol version is the specification of the transport entities and endpoints
+and should not be subject to change very often. The message specification is
+by design subject to change to accomodate for new message types and expansion of
+the messages.
+
+=== Updating records
+
+Due to different data models in the endpoint systems, full document/entity updates
+will be impossible to handle. Therefore, all updates has to be thought of delta
+updates and the consumer system must update an existing record with the modified
+fields in the update message.

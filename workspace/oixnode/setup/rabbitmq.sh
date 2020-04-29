@@ -1,21 +1,43 @@
 #!/bin/bash
 
-#!/bin/bash
-
-VHOST=project
-EXCHANGE=project-exchange
+VHOST=oix
+EXCHANGE=oix
 ADMIN_USER=admin
-ADMIN_PASS=secret
-MGMT_USER=mgmt
-MGMT_PASS=secret
-QUEUE1=queue1
-QUEUE2=queue2
-QUEUE3=queue3
+ADMIN_PASS=somesecretpassword
+MGMT_USER=oix
+MGMT_PASS=badpass
+QUEUE1=incomming
+QUEUE2=outgoing
 
+# Apt
+add-apt-repository universe
+apt install -y apt-transport-https
+
+#Mongodb
+apt install -y  mongodb-server
+
+# curl
+apt install -y  curl
+apt install -y  wget
 # RabbitMQ
+apt install -y  rabbitmq-server
 
-apt install -y -t stretch-backports rabbitmq-server
+# Node.js
+apt install -y  nodejs
+apt install -y  npm
 
+# git
+apt install -y  git
+
+# node red
+npm install -g --unsafe-perm node-red
+#.net core
+
+wget https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
+dpkg -i packages-microsoft-prod.deb
+apt update -y
+apt install -y dotnet-sdk-3.1
+apt install -y aspnetcore-runtime-3.1
 # Remove guest user
 
 rabbitmqctl delete_user guest
@@ -24,8 +46,8 @@ rabbitmqctl delete_user guest
 
 rabbitmq-plugins enable rabbitmq_management
 
-curl http://localhost:15672/cli/rabbitmqadmin > /usr/local/sbin/rabbitmqadmin
-chmod +x /usr/local/sbin/rabbitmqadmin
+#curl http://localhost:15672/cli/rabbitmqadmin > /usr/local/sbin/rabbitmqadmin
+#chmod +x /usr/local/sbin/rabbitmqadmin
 
 # Add users
 
@@ -46,26 +68,26 @@ rabbitmqadmin -u${ADMIN_USER} -p${ADMIN_PASS} declare exchange --vhost=${VHOST} 
 
 rabbitmqadmin -u${ADMIN_USER} -p${ADMIN_PASS} declare queue --vhost=${VHOST} name=${QUEUE1} durable=true auto_delete=false
 rabbitmqadmin -u${ADMIN_USER} -p${ADMIN_PASS} declare queue --vhost=${VHOST} name=${QUEUE2} durable=true auto_delete=false
-rabbitmqadmin -u${ADMIN_USER} -p${ADMIN_PASS} declare queue --vhost=${VHOST} name=${QUEUE3} durable=true auto_delete=false
+#rabbitmqadmin -u${ADMIN_USER} -p${ADMIN_PASS} declare queue --vhost=${VHOST} name=${QUEUE3} durable=true auto_delete=false
 
 rabbitmqadmin -u${ADMIN_USER} -p${ADMIN_PASS} declare binding --vhost=${VHOST} source=${EXCHANGE} destination=${QUEUE1}
 rabbitmqadmin -u${ADMIN_USER} -p${ADMIN_PASS} declare binding --vhost=${VHOST} source=${EXCHANGE} destination=${QUEUE2}
-rabbitmqadmin -u${ADMIN_USER} -p${ADMIN_PASS} declare binding --vhost=${VHOST} source=${EXCHANGE} destination=${QUEUE3}
+#rabbitmqadmin -u${ADMIN_USER} -p${ADMIN_PASS} declare binding --vhost=${VHOST} source=${EXCHANGE} destination=${QUEUE3}
 
 ## SSL config
 
-cat << EOF >/etc/rabbitmq/rabbitmq.config
-[
-  {rabbit, [
-     {ssl_listeners, [5671]},
-     {ssl_options, [{cacertfile, "/etc/apache2/ssl/domain.ca"},
-                    {certfile,   "/etc/apache2/ssl/domain.crt"},
-                    {keyfile,    "/etc/apache2/ssl/domain.key"},
-                    {verify,     verify_peer},
-                    {fail_if_no_peer_cert, false}]}
-   ]}
-].
-EOF
+#cat << EOF >/etc/rabbitmq/rabbitmq.config
+#[
+#  {rabbit, [
+#     {ssl_listeners, [5671]},
+#     {ssl_options, [{cacertfile, "/etc/apache2/ssl/domain.ca"},
+#                    {certfile,   "/etc/apache2/ssl/domain.crt"},
+#                    {keyfile,    "/etc/apache2/ssl/domain.key"},
+#                    {verify,     verify_peer},
+#                    {fail_if_no_peer_cert, false}]}
+#   ]}
+#].
+#EOF
 
 ## Commands
 #

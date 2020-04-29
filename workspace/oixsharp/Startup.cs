@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using oixsharp.Repositories;
+using Newtonsoft;
 
 namespace oixsharp
 {
@@ -26,6 +28,7 @@ namespace oixsharp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
+            services.AddSingleton(typeof(IConsumersRepository), typeof(ConsumersRepository));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,11 +40,11 @@ namespace oixsharp
             }
 
             app.UseHttpsRedirection();
-
+        
             app.UseRouting();
 
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

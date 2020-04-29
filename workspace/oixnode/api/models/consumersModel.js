@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var ConsumersSchema = new Schema({
   endpoint: {
     type: String,
-    required: 'endpoint url i missing'
+    required: 'endpoint url is missing'
   },
   address: {
     type: String,
@@ -33,8 +33,7 @@ var ConsumersSchema = new Schema({
     enum: ['test', 'development', 'production']
   },
   accepts: [{
-    type: String,
-    enum: ['test', 'development', 'production']
+    type: String
   }],
   versions: [{
     type: String,

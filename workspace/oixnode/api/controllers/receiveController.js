@@ -13,7 +13,7 @@ function enqueueMessage(consumer)
 }
 
  exports.receive_message  = function(req, res) {
-
+/*
  console.log("Receive message");
  let films = await Promise.all(
    req.body.envelope.header.recipients.map(async recipient => {
@@ -22,10 +22,12 @@ function enqueueMessage(consumer)
    })
  )
 async.map(req.body.envelope.header.recipients,)
+*/
+
  Consumer.findOne({address: address}, function(err, consumer) {
    if (err)
      return;
-   callback(consumer);
+   enqueueMessage(consumer);
  });
 
   //res.json(message);
@@ -33,3 +35,4 @@ async.map(req.body.envelope.header.recipients,)
  res.json(req.body.envelope.header.recipients);
 
 };
+ 

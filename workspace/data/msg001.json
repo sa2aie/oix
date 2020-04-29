@@ -1,0 +1,19 @@
+{
+   "header": {
+      "sender" : "monarch@acme.com",
+      "recipients" : ["queen@xyz.com","prince@abc.com"],
+      "messageid" : "12356-1234-12345@acme.com",
+      "expires" : "2020-06-01T14:00:00+UTC",
+      "message_type" : "hello",
+      "api_version" : "0.1"
+    },
+    "transitinformation":{
+      "path":["broker@acme.com", "publicendpoint@acme.com"],
+      "timetolive" : 28
+    },
+    "message" : {
+        "text" : "hello"
+    },
+    "signature" : "9sd18313812ab3s3=="
+}
+

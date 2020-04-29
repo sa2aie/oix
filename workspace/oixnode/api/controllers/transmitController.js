@@ -2,7 +2,7 @@
 
 exports.transmit_message  = function(req, res) {
 
-  var message = JSON.parse(req.body);
+  var message = req.body;
 
   res.json(message);
 

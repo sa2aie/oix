@@ -1,0 +1,2 @@
+#!/bin/bash
+curl -d @$1 -H 'Content-Type: application/json' -k https://localhost:5001/v1/receive
